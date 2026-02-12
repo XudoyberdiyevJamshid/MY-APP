@@ -1,0 +1,56 @@
+<div class="container mx-auto p-6 max-w-5xl">
+
+  <button (click)="goBack()" class="mb-6 flex items-center text-gray-600 hover:text-blue-600 transition">
+    ⬅ Orqaga
+  </button>
+
+  @if (isLoading()) {
+    <div class="text-center text-blue-500 text-xl animate-pulse py-20">
+      Ma'lumot yuklanmoqda...
+    </div>
+  }
+
+  @if (product(); as item) {
+    <div class="bg-white rounded-2xl shadow-lg border p-8 grid grid-cols-1 md:grid-cols-2 gap-10">
+      
+      <div class="flex items-center justify-center bg-gray-50 rounded-xl p-4">
+        <img [src]="item.image" [alt]="item.title" class="max-h-96 object-contain mix-blend-multiply">
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <span class="text-blue-500 font-bold tracking-wider uppercase mb-2 text-sm">
+          {{ item.category }}
+        </span>
+        
+        <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+          {{ item.title }}
+        </h1>
+
+        <div class="flex items-center text-yellow-500 mb-6">
+          <span class="text-xl">★</span> 
+          <span class="font-bold ml-1">{{ item.rating.rate }}</span>
+          <span class="text-gray-400 ml-2 text-sm">({{ item.rating.count }} ta sharh)</span>
+        </div>
+
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          {{ item.description }}
+        </p>
+
+        <hr class="mb-6 border-gray-200">
+
+        <div class="flex items-center justify-between">
+          <span class="text-4xl font-bold text-gray-900">
+            {{ item.price | currency }}
+          </span>
+
+          <button 
+            (click)="addToCart()"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:shadow-blue-200 transition transform hover:scale-105 active:scale-95">
+            Savatga qo'shish 🛒
+          </button>
+        </div>
+      </div>
+
+    </div>
+  }
+</div>
