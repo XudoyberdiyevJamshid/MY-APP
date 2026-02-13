@@ -8,14 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class MovieService {
   private apiKey = 'b1fa2135';
-  private http=inject(HttpClient)
+  private http = inject(HttpClient);
 
-private apiUrl = 'https://www.omdbapi.com'
-
+  private apiUrl = 'https://www.omdbapi.com';
 
   searchMovies(term: string = 'Marvel'): Observable<OmdbResponse> {
-    
     return this.http.get<OmdbResponse>(`${this.apiUrl}/?apikey=${this.apiKey}&s=${term}`);
   }
-  
+
+  getMovieById(imdbID: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/?apikey=${this.apiKey}&i=${imdbID}&plot=full`);
+  }
 }

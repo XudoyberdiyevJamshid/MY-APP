@@ -1,0 +1,81 @@
+<div class="min-h-screen bg-gray-900 text-gray-100 p-6 flex justify-center items-center">
+  @if (isLoading()) {
+    <div class="text-red-500 text-2xl animate-pulse font-bold">Kino yuklanmoqda... 🍿</div>
+  }
+
+  @if (movie(); as item) {
+    <div
+      class="max-w-5xl w-full bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-700"
+    >
+      <button
+        (click)="goBack()"
+        class="absolute top-8 left-8 bg-black/50 hover:bg-red-600 text-white p-3 rounded-full transition z-10 backdrop-blur-sm"
+      >
+        ⬅ Orqaga
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="h-[500px] md:h-auto relative">
+          <img
+            [src]="
+              item.Poster !== 'N/A' ? item.Poster : 'https://placehold.co/400x600?text=No+Poster'
+            "
+            [alt]="item.Title"
+            class="w-full h-full object-cover"
+          />
+
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent md:bg-gradient-to-r"
+          ></div>
+        </div>
+
+        <div class="col-span-2 p-8 md:p-12 flex flex-col justify-center">
+          <div class="flex items-center gap-4 mb-4 text-sm text-gray-400">
+            <span class="border border-gray-600 px-2 py-1 rounded">{{ item.Year }}</span>
+            <span>{{ item.Runtime }}</span>
+            <span class="bg-gray-700 px-2 py-1 rounded text-white">{{ item.Rated }}</span>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
+            {{ item.Title }}
+          </h1>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            @for (genre of item.Genre.split(','); track genre) {
+              <span class="text-red-400 font-semibold bg-red-400/10 px-3 py-1 rounded-full text-sm">
+                {{ genre }}
+              </span>
+            }
+          </div>
+
+          <p
+            class="text-gray-300 text-lg leading-relaxed mb-8 italic border-l-4 border-red-600 pl-4"
+          >
+            "{{ item.Plot }}"
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+            <div>
+              <p class="text-gray-500 mb-1">Rejissyor</p>
+              <p class="text-white font-medium">{{ item.Director }}</p>
+            </div>
+            <div>
+              <p class="text-gray-500 mb-1">Aktyorlar</p>
+              <p class="text-white font-medium">{{ item.Actors }}</p>
+            </div>
+            <div>
+              <p class="text-gray-500 mb-1">IMDb Reyting</p>
+              <div class="flex items-center text-yellow-400 font-bold text-lg">
+                ★ {{ item.imdbRating }} <span class="text-gray-600 text-xs ml-2">/ 10</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-gray-500 mb-1">Mukofotlar</p>
+              <p class="text-white font-medium">{{ item.Awards }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

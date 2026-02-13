@@ -1,13 +1,14 @@
-import { ProductService } from './../../services/product';
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { Product } from '../../modules/product';
 import { CurrencyPipe } from '@angular/common';
-import { CartService } from '../../services/cart';
-import { RouterLink } from "@angular/router";
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { ProductCard } from '../product-card/product-card';
+import { Product } from '../../../modules/product';
+import { ProductService } from '../product';
+import { CartService } from '../../../services/cart';
 
 @Component({
   selector: 'app-home',
-  imports: [CurrencyPipe, RouterLink],
+  imports: [CurrencyPipe, RouterLink, ProductCard],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

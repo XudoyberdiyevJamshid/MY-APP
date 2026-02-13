@@ -1,0 +1,12 @@
+<button [type]="type()" [class]="baseClasses()" [disabled]="disabled()">
+  @if (loading()) {
+    <app-icon name="loader" class="w-5 h-5 animate-spin"></app-icon>
+    <span>Yuklanmoqda...</span>
+  } @else {
+    @if (label()) {
+      {{ label() }}
+    } @else {
+      <ng-content></ng-content>
+    }
+  }
+</button>

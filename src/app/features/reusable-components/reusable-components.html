@@ -1,0 +1,72 @@
+<div class="container mx-auto p-10">
+  <h1 class="text-3xl font-bold mb-8">Reusable Components 🧩</h1>
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">1 . Primary Buttons</h2>
+      <div class="flex flex-wrap gap-4 items-center">
+        <app-btn label="Saqlash"></app-btn>
+        <app-btn label="Yuborish"></app-btn>
+        <app-btn label="Yuklash" [loading]="isLoading()" (click)="toggled()"></app-btn>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">1 . Danger Buttons</h2>
+      <div class="flex flex-wrap gap-4 items-center">
+        <app-btn label="O'chirish" variant="danger"></app-btn>
+        <app-btn label="Yuborish" variant="danger"></app-btn>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">3. Outline & Ghost</h2>
+      <div class="flex flex-wrap gap-4">
+        <app-btn label="Batafsil" variant="outline" icon="info"></app-btn>
+        <app-btn label="Sozlamalar" variant="ghost" icon="settings"></app-btn>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">4. Disabled</h2>
+      <div class="flex flex-wrap gap-4">
+        <app-btn label="Bosilmaydi" [disabled]="true"></app-btn>
+        <app-btn label="O'chiq" variant="danger" [disabled]="true" icon="block"></app-btn>
+      </div>
+    </section>
+
+    <hr class="my-10 border-gray-200" />
+
+    <section class="max-w-md">
+      <h2 class="text-xl font-semibold mb-6 text-gray-700">Inputs & Forms 📝</h2>
+
+      <div class="space-y-6">
+        <div>
+          <app-input
+            label="Foydalanuvchi nomi"
+            placeholder="Ismingizni yozing"
+            [ngModel]="username()"
+            (ngModelChange)="username.set($event)"
+            icon="user"
+          >
+          </app-input>
+
+          <p class="mt-2 text-sm text-gray-500">
+            Natija: <span class="font-bold">{{ username() }}</span>
+          </p>
+        </div>
+
+        <div>
+          <app-input
+            label="Elektron pochta"
+            placeholder="mail@example.com"
+            type="email"
+            icon="mail"
+            [error]="emailError()"
+          >
+          </app-input>
+        </div>
+
+        <div>
+          <app-input label="ID Raqam" value="ID-12345" [disabled]="true" icon="lock"> </app-input>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

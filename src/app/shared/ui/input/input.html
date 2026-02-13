@@ -1,0 +1,38 @@
+<div class="flex flex-col gap-1.5 w-full">
+  @if (label()) {
+    <label class="text-sm font-medium text-gray-700">
+      {{ label() }}
+    </label>
+  }
+
+  <div class="relative">
+    @if (icon()) {
+      <div
+        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400"
+      >
+        <app-icon [name]="icon()" class="w-5 h-5"></app-icon>
+      </div>
+    }
+
+    <input
+      #myInput
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [value]="value()"
+      [disabled]="isDisabled() || disabled()"
+      (input)="onInput(myInput.value)"
+      (blur)="onTouch()"
+      class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-gray-900 shadow-sm transition-all placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none disabled:bg-gray-50 disabled:text-gray-500"
+      [class.pl-10]="icon()"
+      [class.border-red-500]="error()"
+      [class.focus:border-red-500]="error()"
+      [class.focus:ring-red-500/20]="error()"
+    />
+  </div>
+
+  @if (error()) {
+    <p class="text-xs text-red-500 font-medium animate-pulse">
+      {{ error() }}
+    </p>
+  }
+</div>

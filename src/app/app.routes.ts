@@ -1,9 +1,10 @@
-
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home';
-import { CartComponent } from './pages/cart/cart';
-import { MoviesComponent } from './pages/movies/movies';
-import { ProductDetailComponent } from './pages/product-detail/product-detail';
+import { CartComponent } from './features/cart/cart';
+import { ProductDetailComponent } from './features/products/product-detail/product-detail';
+import { ReusableComponents } from './features/reusable-components/reusable-components';
+import { MovieDetailComponent } from './features/movies/movie-detail/movie-detail';
+import { MoviesComponent } from './features/movies/movies-list/movies';
+import { HomeComponent } from './features/products/product-list/home';
 
 export const routes: Routes = [
   {
@@ -15,11 +16,20 @@ export const routes: Routes = [
     component: CartComponent,
   },
   {
-    path:'movies',
-    component:MoviesComponent
+    path: 'movies',
+    component: MoviesComponent,
   },
   {
-    path:'product/:id',
-    component:ProductDetailComponent
-  }
+    path: 'movies/:id',
+    component: MovieDetailComponent,
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailComponent,
+  },
+
+  {
+    path: 'reusable-component',
+    component: ReusableComponents,
+  },
 ];

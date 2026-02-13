@@ -1,0 +1,33 @@
+<div
+  class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100"
+>
+  <div
+    [routerLink]="['/product', product().id]"
+    class="h-48 p-4 flex items-center justify-center bg-white"
+  >
+    <img [src]="product().image" [alt]="product().title" />
+  </div>
+  <div class="p-4 flex flex-col flex-grow">
+    <span class="text-xs text-blue-500 uppercase font-bold tracking-wider mb-1">
+      {{ product().category }}
+    </span>
+    <h2
+      class="text-lg font-semibold text-gray-800 leading-tight mb-2 line-clamp-2"
+      [title]="product().title"
+    >
+      {{ product().title }}
+    </h2>
+
+    <div class="mt-auto flex items-center justify-between pt-4">
+      <span class="text-xl font-bold text-gray-900">
+        {{ product().price | currency }}
+      </span>
+      <button
+        (click)="addToCart(product())"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 active:scale-95 transition-transform"
+      >
+        Savatga
+      </button>
+    </div>
+  </div>
+</div>
