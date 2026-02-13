@@ -5,6 +5,7 @@ import { ReusableComponents } from './features/reusable-components/reusable-comp
 import { MovieDetailComponent } from './features/movies/movie-detail/movie-detail';
 import { MoviesComponent } from './features/movies/movies-list/movies';
 import { HomeComponent } from './features/products/product-list/home';
+import { FormPracticeComponent } from './features/form-practice/form-practice';
 
 export const routes: Routes = [
   {
@@ -31,5 +32,9 @@ export const routes: Routes = [
   {
     path: 'reusable-component',
     component: ReusableComponents,
+  },
+  {
+    path: 'form',
+    component: FormPracticeComponent,
   },
 ];
