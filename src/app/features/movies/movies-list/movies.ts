@@ -5,10 +5,11 @@ import { Movie } from '../../../modules/movie';
 
 import { MovieService } from '../../../services/movie';
 import { MovieCard } from '../movie-card/movie-card';
+import { MovieSearch } from '../components/movie-search/movie-search';
 
 @Component({
   selector: 'app-movies',
-  imports: [RouterLink, MovieCard],
+  imports: [RouterLink, MovieCard, MovieSearch],
   templateUrl: './movies.html',
   styleUrl: './movies.scss',
 })
