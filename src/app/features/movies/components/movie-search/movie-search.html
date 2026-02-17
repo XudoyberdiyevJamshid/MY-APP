@@ -1,0 +1,26 @@
+<div class="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg mt-10">
+  <h2 class="text-xl font-bold mb-4 text-gray-800">🎬 Kinolarni Qidirish</h2>
+
+  <input
+    [formControl]="searchControl"
+    type="text"
+    placeholder="Kino nomini yozing..."
+    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+  />
+
+  <div class="mt-4">
+    @if (results$ | async; as movies) {
+      <ul class="space-y-2">
+        @for (movie of movies; track movie.id) {
+          <li class="p-3 bg-gray-50 rounded hover:bg-blue-50 cursor-pointer transition">
+            {{ movie.title }}
+          </li>
+        }
+      </ul>
+
+      @if (movies.length === 0 && searchControl.value) {
+        <p class="text-red-500 text-sm mt-2">Hech narsa topilmadi 😢</p>
+      }
+    } @else {}
+  </div>
+</div>
