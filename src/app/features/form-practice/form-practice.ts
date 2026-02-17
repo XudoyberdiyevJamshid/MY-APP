@@ -1,10 +1,11 @@
 import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Highlight } from '../../core/directives/highlight';
 
 @Component({
   selector: 'app-form-practice',
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule, JsonPipe, Highlight],
   templateUrl: './form-practice.html',
   styleUrl: './form-practice.scss',
 })
@@ -33,20 +34,19 @@ export class FormPracticeComponent {
     return this.form.controls;
   }
 
+  private newFb = inject(FormBuilder);
 
-  private newFb=inject(FormBuilder)
+  newForm: FormGroup = this.newFb.group({
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
+    lastName: [''],
+    address: ['', [Validators.required]],
+    isMarried: [false],
+    oldJob: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    age: [null, [Validators.required]],
+  });
 
-  newForm:FormGroup=this.newFb.group({
-    name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(6)]],
-    lastName:[''],
-    address:['',[Validators.required]],
-    isMarried:[false],
-    oldJob:['',[Validators.required]],
-    email:['',[Validators.required,Validators.email]],
-    age:[null,[Validators.required]]
-  })
-
-  get newF(){
-    return this.newForm.controls
+  get newF() {
+    return this.newForm.controls;
   }
 }
