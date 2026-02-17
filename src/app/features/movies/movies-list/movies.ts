@@ -2,14 +2,15 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 import { Movie } from '../../../modules/movie';
-
 import { MovieService } from '../../../services/movie';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieSearch } from '../components/movie-search/movie-search';
+import { MovieFilter } from '../components/movie-filter/movie-filter';
+
 
 @Component({
   selector: 'app-movies',
-  imports: [RouterLink, MovieCard, MovieSearch],
+  imports: [ MovieCard, MovieSearch, MovieFilter],
   templateUrl: './movies.html',
   styleUrl: './movies.scss',
 })

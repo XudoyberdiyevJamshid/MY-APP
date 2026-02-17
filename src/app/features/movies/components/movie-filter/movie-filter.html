@@ -1,0 +1,56 @@
+<div class="p-6 bg-white rounded-xl shadow-lg max-w-2xl mx-auto mt-10">
+  
+  <h2 class="text-2xl font-bold mb-6">🎥 Kino Filter (RxJS)</h2>
+
+  <div class="flex gap-4 mb-6">
+    
+    <input 
+      [formControl]="searchControl" 
+      type="text" 
+      placeholder="Kino nomini yozing..." 
+      class="flex-1 p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+    >
+
+    <select 
+      [formControl]="categoryControl"
+      class="p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+    >
+      <option value="all">Barchasi</option>
+      <option value="action">Jangari (Action)</option>
+      <option value="drama">Drama</option>
+      <option value="comedy">Komediya</option>
+    </select>
+
+  </div>
+
+  @if (movies$ | async; as movies) {
+    
+    <div class="grid grid-cols-1 gap-3">
+      @for (movie of movies; track movie.id) {
+        <div class="p-4 border rounded-lg flex justify-between items-center hover:bg-gray-50">
+          <span class="font-bold text-lg">{{ movie.title }}</span>
+          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase"
+            [class.bg-red-100]="movie.category === 'action'"
+            [class.text-red-700]="movie.category === 'action'"
+            [class.bg-blue-100]="movie.category === 'drama'"
+            [class.text-blue-700]="movie.category === 'drama'"
+            [class.bg-yellow-100]="movie.category === 'comedy'"
+            [class.text-yellow-700]="movie.category === 'comedy'"
+          >
+            {{ movie.category }}
+          </span>
+        </div>
+      }
+      
+      @if (movies.length === 0) {
+        <div class="text-center text-gray-500 py-4">Hech narsa topilmadi 😔</div>
+      }
+    </div>
+
+  } @else {
+    <div class="text-center py-10 animate-pulse text-blue-600 font-bold">
+      ⏳ Yuklanyapti...
+    </div>
+  }
+
+</div>
