@@ -1,0 +1,37 @@
+<div class="p-10 bg-green-100 min-h-screen space-y-8">
+  
+  <div class="flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-green-800">
+      Xush kelibsiz, {{ auth.currentUser()?.name }}! 🕵️‍♂️
+    </h1>
+    <app-btn (click)="onLogout()" label="Chiqish" variant="danger"></app-btn>
+  </div>
+
+  <p>Bu maxfiy Admin Panel.</p>
+
+  <hr class="border-green-300">
+
+  @defer (on interaction) {
+    
+    <app-heavy-chart />
+
+  } @placeholder {
+    
+    <div class="p-10 bg-gray-200 rounded-xl text-center border-2 border-dashed border-gray-400 cursor-pointer hover:bg-gray-300 transition">
+      <p class="text-gray-600 font-bold">📉 Statistikani ko'rish uchun bosing</p>
+      <p class="text-xs text-gray-500">(Bu joy bosilganda kod yuklanadi)</p>
+    </div>
+
+  } @loading (minimum 2s) {
+    
+    <div class="p-10 bg-yellow-100 rounded-xl text-center animate-pulse">
+      ⏳ Statistika yuklanyapti...
+    </div>
+
+  } @error {
+    
+    <div class="text-red-500">Internet xatosi! Yuklab bo'lmadi.</div>
+
+  }
+
+</div>

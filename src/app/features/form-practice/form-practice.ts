@@ -32,4 +32,21 @@ export class FormPracticeComponent {
   get f() {
     return this.form.controls;
   }
+
+
+  private newFb=inject(FormBuilder)
+
+  newForm:FormGroup=this.newFb.group({
+    name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(6)]],
+    lastName:[''],
+    address:['',[Validators.required]],
+    isMarried:[false],
+    oldJob:['',[Validators.required]],
+    email:['',[Validators.required,Validators.email]],
+    age:[null,[Validators.required]]
+  })
+
+  get newF(){
+    return this.newForm.controls
+  }
 }

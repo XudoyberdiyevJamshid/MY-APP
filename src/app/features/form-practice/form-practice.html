@@ -86,3 +86,91 @@
     {{ form.status }}
   </div>
 </div>
+
+<div class="container mx-auto p-10 max-w-lg">
+  <h1 class="text-3xl text-center">new form</h1>
+  <form
+    [formGroup]="newForm"
+    class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 space-y-4"
+  >
+    <div class="flex flex-col gap-1">
+      <label class="text-sm font-medium text-gray-700"> name </label>
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Ali"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        [class.border-red-500]="newF['name'].invalid && newF['name'].touched"
+      />
+      @if (newF['name'].invalid && newF['name'].touched) {
+        <span class="text-xs text-red-500"
+          >Ism kamida 3 ta belgi 6 ta belgidan oshmasligi kerak</span
+        >
+      }
+    </div>
+
+    <div class="flex flex-col gap-1 mt-2">
+      <label class="text-sm font-medium text-gray-700">lastName</label>
+      <input
+        formControlName="lastName"
+        type="text"
+        placeholder="vali"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        [class.border-red-500]="newF['lastName'].invalid && newF['lastName'].touched"
+      />
+      @if (newF['lastName'].invalid && newF['lastName'].touched) {
+        <span class="text-xs text-red-500"></span>
+      }
+    </div>
+    <div class="flex flex-col gap-1 mt-2">
+      <label class="text-sm font-medium text-gray-700">address</label>
+      <input
+        formControlName="address"
+        type="text"
+        placeholder="adress"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        [class.border-red-500]="newF['address'].invalid && newF['address'].touched"
+      />
+      @if (newF['address'].invalid && newF['address'].touched) {
+        <span class="text-xs text-red-500"></span>
+      }
+    </div>
+    <div class="flex items-center gap-2">
+      <input
+        type="checkbox"
+        formControlName="isMarried"
+        id="isMarried"
+        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      />
+      <label for="isMarried" class="text-sm text-gray-700">uylanganmi?</label>
+    </div>
+
+    <div>
+      <label for="">oldJob</label>
+      <input
+        [class.border-red-500]="newF['oldJob'].invalid && newF['oldJob'].touched"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        type="text"
+        formControlName="oldJob"
+      />
+    </div>
+    <div>
+      <label for="">email</label>
+      <input
+        [class.border-red-500]="newF['email'].invalid && newF['email'].touched"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        type="text"
+        formControlName="email"
+      />
+    </div>
+    <div>
+      <label for="">age</label>
+      <input
+        [class.border-red-500]="newF['age'].invalid && newF['age'].touched"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        type="text"
+        formControlName="age"
+      />
+    </div>
+  </form>
+</div>
